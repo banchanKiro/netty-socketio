@@ -219,7 +219,7 @@ public class WebSocketTransport extends ChannelInboundHandlerAdapter {
 
 		client.bindChannel(channel, Transport.WEBSOCKET);
 
-		authorizeHandler.connect(client);
+//		authorizeHandler.connect(client);
 
 		if (client.getCurrentTransport() == Transport.POLLING) {
 			SchedulerKey key = new SchedulerKey(SchedulerKey.Type.UPGRADE_TIMEOUT, sessionId);
