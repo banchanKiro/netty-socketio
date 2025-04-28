@@ -161,8 +161,9 @@ public class WebSocketTransport extends ChannelInboundHandlerAdapter {
 
 	private void handshake(ChannelHandlerContext ctx, final UUID sessionId, String path, FullHttpRequest req) {
 		final Channel channel = ctx.channel();
-
-		WebSocketServerHandshakerFactory factory = new WebSocketServerHandshakerFactory(getWebSocketLocation(req), null,
+		String webSocketUrl = getWebSocketLocation(req);
+		log.info("websocket url: {}", webSocketUrl);
+		WebSocketServerHandshakerFactory factory = new WebSocketServerHandshakerFactory(webSocketUrl, null,
 				true, configuration.getMaxFramePayloadLength());
 		WebSocketServerHandshaker handshaker = factory.newHandshaker(req);
 		if (handshaker != null) {
